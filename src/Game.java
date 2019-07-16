@@ -16,9 +16,16 @@ public class Game {
         }
         letter = Character.toLowerCase(letter);
         if(hits.indexOf(letter) != -1 || misses.indexOf(letter) != -1) {
-            throw new IllegalArgumentException(letter + "has already been guessed");
+            throw new IllegalArgumentException(letter + " has already been guessed");
         }
         return letter;
+    }
+
+    public boolean applyGuess(String guess) {
+        if(guess.length() == 0) {
+            throw new IllegalArgumentException("No letter found");
+        }
+        return applyGuess(guess.charAt(0));
     }
 
     public boolean applyGuess(char letter) {
